@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Generated Questions</h1>
+    {% if questions %}
+        <ul>
+            {% for q in questions %}
+                <li>{{ q.ques }}</li>
+                <ul>
+                    {% for letter, choice in q.choices.items() %}
+                        <li>{{ letter }}. {{ choice.capitalize() }}</li>
+                    {% endfor %}
+                </ul>
+                <p><strong>Correct Answer:</strong> {{ q.correct_ans.capitalize() }}</p>
+            {% endfor %}
+        </ul>
+        <form action="{{ url_for('download_pdf') }}" method="get">
+            <input type="hidden" name="questions" value="{{ questions|tojson }}>
+            <input type="submit" value="Download as PDF">
+        </form>
+        <form action="{{ url_for('download_word') }}" method="get">
+            <input type="hidden" name="questions" value="{% for q in questions %}{{ q.ques }}{% if not loop.last %};{% endif %}{% endfor %}">
+            <input type="submit" value="Download as Word">
+        </form>
+    {% else %}
+        <p>No questions generated.</p>
+    {% endif %}
+    <a href="/">Go Back</a>
+</body>
+</html>

@@ -1,0 +1,4 @@
+*.txt
+*.ipynb
+uploads
+full_working_code.py
