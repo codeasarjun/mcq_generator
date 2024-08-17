@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file,redirect, url_for, flash
 import os
 from core.text_processing import process_text
 from core.pdf_operations import create_pdf
@@ -61,6 +61,27 @@ def download_word():
     questions = request.args.getlist('questions')
     word_file = create_word(questions)
     return send_file(word_file, as_attachment=True, download_name='questions.docx', mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
+        # Process the contact information here (e.g., save to database or send email)
+        flash('Thank you for contacting us!', 'success')
+        return redirect(url_for('contact'))
+    return render_template('contact.html')
+
+@app.route('/feedback', methods=['GET', 'POST'])
+def feedback():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        feedback = request.form.get('feedback')
+        flash('Thank you for your feedback!', 'success')
+        return redirect(url_for('feedback'))
+    return render_template('feedback.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
