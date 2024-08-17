@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Your Site{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        {% block content %}
+        <!-- Default content will be placed here -->
+        {% endblock %}
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="/contact">Contact Us</a>
+                    <a href="/feedback">Feedback</a>
+                </div>
+                <p>&copy; 2024 Arjun. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
