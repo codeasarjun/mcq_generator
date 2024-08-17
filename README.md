@@ -65,7 +65,7 @@ The process results in a set of multiple-choice questions that are designed to t
 
 - **`UPLOAD_FOLDER:`** Directory for storing uploaded files.
 - **`ALLOWED_EXTENSIONS:`** Allowed file extensions for uploads (currently `.txt`).
-- **`SECRET_KEY:`** Used for session management and flash messages. Update this to a secure key in a production environment.
+
 
 ## Usage
 
@@ -102,3 +102,8 @@ The process results in a set of multiple-choice questions that are designed to t
    git clone https://github.com/codeasarjun/mcq_genrator.git
    cd <your folder>
 ```
+
+## Output 
+<img src='https://github.com/codeasarjun/mcq_genrator/blob/main/img/home.png'>
+<img src='https://github.com/codeasarjun/mcq_genrator/blob/main/img/result.png'>
+
