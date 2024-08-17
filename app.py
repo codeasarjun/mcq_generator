@@ -9,12 +9,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['ALLOWED_EXTENSIONS'] = {'txt'}
 
-try:
-    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-except PermissionError as e:
-    print(f"PermissionError: {e}")
-except Exception as e:
-    print(f"An unexpected error occurred: {e}")
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 
 def allowed_file(filename):
